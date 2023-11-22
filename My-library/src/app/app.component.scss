@@ -1,0 +1,25 @@
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  &__title {
+    font-size: 25px;
+  }
+
+  &__nav a {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    margin-right: 8px;
+  }
+
+  &__nav a:last-child {
+    margin-right: 0;
+  }
+
+  &__nav a:hover {
+    text-decoration: underline;
+  }
+}

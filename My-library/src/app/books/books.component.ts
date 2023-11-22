@@ -7,5 +7,7 @@ import {Component} from "@angular/core";
 })
 
 export class BooksComponent {
-
+  displayedColumns: string[] = ['id', 'author', 'title', 'publisher', 'year'];
+  // @ts-ignore
+  dataSource: string[];
 }

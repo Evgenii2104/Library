@@ -1,13 +1,16 @@
-hello
+<mat-toolbar color="primary">
+  <div class="toolbar">
+    <div class="toolbar__title">
+      Library
+    </div>
+    <nav class="toolbar__nav">
+      <a [routerLink]="['/authors']">Добавить автора</a>
+      <a [routerLink]="['/books']">Добавить книгу</a>
+    </nav>
+  </div>
+</mat-toolbar>
 
 <div class="container">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/">authors</a></li>
-      <li><a href="/books">books</a></li>
-    </ul>
-  </div>
+  <router-outlet></router-outlet>
 </div>
 
-
-<router-outlet></router-outlet>
