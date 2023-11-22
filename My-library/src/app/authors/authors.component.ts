@@ -1,6 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {LocalStorageServices} from "../core/services/local-storage.services";
+
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AuthorsInterfaces} from "../core/interfaces/authors.interfaces";
+import {AuthorsServices} from "../core/services/authors.services";
+import {LocalStorageServices} from "../core/services/local-storage.services";
 
 
 @Component({
@@ -11,44 +14,29 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 export class AuthorsComponent implements OnInit{
   displayedColumns: string[] = ['id', 'surname', 'name', 'middleName', 'dateOfBirth'];
-  dataSource: string[];
+  dataSource: AuthorsInterfaces[];
   form: FormGroup
-  authors: any[] | null
-  item: number
-  constructor(private localStorage: LocalStorageServices<any>) {}
+  constructor(private authorsService: AuthorsServices) {}
 
   ngOnInit() {
      this.form = new FormGroup({
-       id: new FormControl('', Validators.required),
        surname: new FormControl('', Validators.required),
        name: new FormControl('', Validators.required),
        middleName: new FormControl('', Validators.required),
        dateOfBirth: new FormControl('', Validators.required)
      })
+    this.dataSource = this.authorsService.getAll()
+
   }
 
-  has() {
-    this.authors = this.localStorage.get('authors')
-    if (this.authors === null) {
-      return null
-    } else {
-      this.item = this.authors.indexOf(this.form.value)
-      if (this.item < 0) {
-        return true
-      } else {
-        return false
-      }
-    }
-  }
 
   onSubmit() {
-    if(this.has() == null) {
-      return  this.localStorage.set('authors', this.form.value)
-    }else if(this.has()) {
-      this.authors?.push(this.form.value)
-      return  this.localStorage.set('authors', this.authors)
-    } else {
-      return 'автор существует'
+    const { surname, name, middleName, dateOfBirth } = this.form.value;
+    const author: AuthorsInterfaces = { surname, name, middleName, id: Date.now(), dateOfBirth };
+    if (!this.authorsService.has(author)) {
+      this.authorsService.add(author);
     }
+    console.log(this.authorsService.getAll());
+    this.dataSource = this.authorsService.getAll()
   }
 }

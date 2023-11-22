@@ -1,58 +1,69 @@
 <div class="form">
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label>id</label>
-    <input type="text" class="form-control" formControlName="id">
-  </div>
-  <div class="form-group">
-    <label>surname</label>
-    <input type="text" class="form-control" formControlName="surname">
-  </div>
-  <div class="form-group">
-    <label>name</label>
-    <input type="text" class="form-control" formControlName="name">
-  </div>
-  <div class="form-group">
-    <label>middleName</label>
-    <input type="text" class="form-control" formControlName="middleName">
-  </div>
-  <div class="form-group">
-    <label>dateOfBirth</label>
-    <input type="text" class="form-control" formControlName="dateOfBirth">
-  </div>
-  <button
-    class="btn btn-success"
-    type="submit"
-    [disabled]="form.invalid"
-  >Добавить автора</button>
-</form>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="example-container">
+        <mat-form-field class="form-group">
+          <mat-label>Surname</mat-label>
+          <input class="form-control" formControlName="surname" matInput placeholder="Пример. Пушкин">
+          <mat-hint align="end"></mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="form-group">
+          <mat-label>Name</mat-label>
+          <input class="form-control" formControlName="name" matInput placeholder="Пример. Александр">
+          <mat-hint align="end"></mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="form-group">
+          <mat-label>MiddleName</mat-label>
+          <input class="form-control" formControlName="middleName" matInput placeholder="Пример. Сергеевич">
+          <mat-hint align="end"></mat-hint>
+        </mat-form-field>
+
+
+        <mat-form-field class="form-group">
+          <mat-label>dateOfBirth</mat-label>
+          <input class="form-control" formControlName="dateOfBirth" matInput placeholder="Пример. 6.06.1799">
+          <mat-hint align="end"></mat-hint>
+        </mat-form-field>
+
+        <button
+          class="btn btn-success"
+          type="submit"
+          [disabled]="form.invalid"
+          mat-raised-button color="primary"
+        >Добавить автора</button>
+      </div>
+    </div>
+  </form>
 </div>
+
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
   <ng-container matColumnDef="surname">
     <th mat-header-cell *matHeaderCellDef> surname </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
   </ng-container>
 
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> name </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
   <ng-container matColumnDef="middleName">
     <th mat-header-cell *matHeaderCellDef> middleName </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.middleName}} </td>
   </ng-container>
 
   <ng-container matColumnDef="dateOfBirth">
     <th mat-header-cell *matHeaderCellDef> dateOfBirth </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

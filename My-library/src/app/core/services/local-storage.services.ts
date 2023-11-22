@@ -3,15 +3,15 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LocalStorageServices<K extends string> {
+export class LocalStorageServices {
   constructor() {}
 
-  set<V>(key: K, value: V): void {
+  set<V>(key: string, value: V): void {
     const valueStr = JSON.stringify(value);
     localStorage.setItem(key, valueStr);
   }
 
-  get<V>(key: K): V | null {
+  get<V>(key: string): V | null {
     const valueStr = localStorage.getItem(key);
     try {
       // @ts-ignore
@@ -22,7 +22,7 @@ export class LocalStorageServices<K extends string> {
     }
   }
 
-  remove(key: K): void {
+  remove(key: string): void {
     localStorage.removeItem(key);
   }
 
