@@ -3,8 +3,6 @@ import {Component, OnInit} from "@angular/core";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthorsInterfaces} from "../core/interfaces/authors.interfaces";
 import {AuthorsServices} from "../core/services/authors.services";
-import {LocalStorageServices} from "../core/services/local-storage.services";
-
 
 @Component({
   selector: 'mc-authors',

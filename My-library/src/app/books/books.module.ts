@@ -3,13 +3,24 @@ import { CommonModule } from '@angular/common';
 import {BooksRoutingModule} from "./books-routing.module";
 import {BooksComponent} from "./books.component";
 import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    BooksRoutingModule,
-    MatTableModule
-  ],
+    imports: [
+        CommonModule,
+        BooksRoutingModule,
+        MatTableModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule
+    ],
   declarations: [BooksComponent]
 })
 export class BooksModule {}

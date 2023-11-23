@@ -1,7 +1,6 @@
 import {AuthorsInterfaces} from "../interfaces/authors.interfaces";
 import {LocalStorageServices} from "./local-storage.services";
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
