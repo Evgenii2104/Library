@@ -1,4 +1,4 @@
-import {AuthorsInterfaces} from "../interfaces/authors.interfaces";
+import {AuthorInterfaces} from "../interfaces/author.interfaces";
 import {LocalStorageServices} from "./local-storage.services";
 import {Injectable} from "@angular/core";
 
@@ -8,22 +8,23 @@ import {Injectable} from "@angular/core";
 export class AuthorsServices {
   constructor(private localStorageService: LocalStorageServices) {}
 
-  add(author: AuthorsInterfaces): void {
-    const authors: AuthorsInterfaces[] | null = this.localStorageService.get<AuthorsInterfaces[]>('authors');
+  add(author: AuthorInterfaces): void {
+    const authors: AuthorInterfaces[] | null = this.localStorageService.get<AuthorInterfaces[]>('authors');
     if (!authors) {
       this.localStorageService.set('authors', [author]);
       return;
     }
     authors.push(author);
-    this.localStorageService.set('authors', authors);
+    const authorsSort = authors.sort((a, b) => a.surname > b.surname ? 1 : -1)
+    this.localStorageService.set('authors', authorsSort);
   }
 
-  has(author: AuthorsInterfaces): boolean {
-    const authors: AuthorsInterfaces[] | null = this.localStorageService.get<AuthorsInterfaces[]>('authors');
+  has(author: AuthorInterfaces): boolean {
+    const authors: AuthorInterfaces[] | null = this.localStorageService.get<AuthorInterfaces[]>('authors');
     if (!authors) {
       return false;
     }
-    const foundAuthor = authors.find((a: AuthorsInterfaces) => {
+    const foundAuthor = authors.find((a: AuthorInterfaces) => {
       return a.name === author.name
         && a.middleName === author.middleName
         && a.surname === author.surname
@@ -33,8 +34,8 @@ export class AuthorsServices {
     return !!foundAuthor;
   }
 
-  getAll(): AuthorsInterfaces[] {
-    const authors: AuthorsInterfaces[] | null = this.localStorageService.get<AuthorsInterfaces[]>('authors');
+  getAll(): AuthorInterfaces[] {
+    const authors: AuthorInterfaces[] | null = this.localStorageService.get<AuthorInterfaces[]>('authors');
     return !authors ? [] : authors;
   }
 }

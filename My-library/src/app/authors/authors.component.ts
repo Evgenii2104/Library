@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthorsInterfaces} from "../core/interfaces/authors.interfaces";
+import {AuthorInterfaces} from "../core/interfaces/author.interfaces";
 import {AuthorsServices} from "../core/services/authors.services";
 
 @Component({
@@ -12,7 +12,7 @@ import {AuthorsServices} from "../core/services/authors.services";
 
 export class AuthorsComponent implements OnInit{
   displayedColumns: string[] = ['id', 'surname', 'name', 'middleName', 'dateOfBirth'];
-  dataSource: AuthorsInterfaces[];
+  dataSource: AuthorInterfaces[];
   form: FormGroup
   constructor(private authorsService: AuthorsServices) {}
 
@@ -30,7 +30,7 @@ export class AuthorsComponent implements OnInit{
 
   onSubmit() {
     const { surname, name, middleName, dateOfBirth } = this.form.value;
-    const author: AuthorsInterfaces = { surname, name, middleName, id: Date.now(), dateOfBirth };
+    const author: AuthorInterfaces = { surname, name, middleName, id: Date.now(), dateOfBirth };
     if (!this.authorsService.has(author)) {
       this.authorsService.add(author);
     }

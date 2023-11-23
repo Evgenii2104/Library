@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {LocalStorageServices} from "./local-storage.services";
-import {AuthorsInterfaces} from "../interfaces/authors.interfaces";
+import {AuthorInterfaces} from "../interfaces/author.interfaces";
 import {BookInterfaces} from "../interfaces/book.interfaces";
 
 @Injectable({
@@ -37,5 +37,9 @@ export class BooksServices {
   getAll(): BookInterfaces[] {
     const books: BookInterfaces[] | null = this.localStorageService.get<BookInterfaces[]>('books');
     return !books ? [] : books;
+  }
+
+  remove(): void {
+    this.localStorageService.remove('books')
   }
 }
