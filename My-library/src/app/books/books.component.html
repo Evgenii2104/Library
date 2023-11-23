@@ -4,12 +4,10 @@
       <div class="example-container">
         <mat-form-field class="form-group">
           <mat-label>Author</mat-label>
-          <mat-select class="form-control" formControlName="author">
+          <mat-select>
             <!--<input class="form-control" formControlName="author" matInput placeholder="Пример. Пушкин">-->
             <mat-option
-              *ngFor="let authorName of authorNames" value="option">
-              <input class="form-control" formControlName="author" matInput placeholder="Пример. Пушкин">
-              {{authorName.surname}}</mat-option>
+              *ngFor="let author of authors" [value]="author">{{author.surname}}</mat-option>
 
           </mat-select>
           <mat-hint align="end"></mat-hint>

@@ -16,7 +16,7 @@ export class BooksComponent implements OnInit{
   displayedColumns: string[] = ['id', 'author', 'title', 'publisher', 'year'];
   dataSource: BookInterfaces[];
   form: FormGroup;
-  authorNames: AuthorsInterfaces[] | null
+  authors: AuthorsInterfaces[] | null
 
 
   constructor(private booksServices: BooksServices, private authorsService: AuthorsServices) {}
@@ -28,9 +28,9 @@ export class BooksComponent implements OnInit{
       publisher: new FormControl('', Validators.required),
       year: new FormControl('', Validators.required)
     })
-    this.authorNames = this.authorsService.getAll()
+    this.authors = this.authorsService.getAll()
     this.dataSource = this.booksServices.getAll()
-    console.log(this.authorNames)
+    console.log(this.authors)
   }
 
   onSubmit() {
