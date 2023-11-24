@@ -36,5 +36,6 @@ export class AuthorsComponent implements OnInit{
     }
     console.log(this.authorsService.getAll());
     this.dataSource = this.authorsService.getAll()
+    this.form.reset()
   }
 }

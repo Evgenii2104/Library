@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import {MatIconModule} from "@angular/material/icon";
         MatFormFieldModule,
         MatSelectModule,
         MatDividerModule,
-        MatIconModule
+        MatIconModule,
+        MatSortModule
     ],
   declarations: [BooksComponent]
 })

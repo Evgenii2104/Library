@@ -1,28 +1,28 @@
 <div class="form">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <div class="example-container">
+      <div class="container-form">
         <mat-form-field class="form-group">
-          <mat-label>Surname</mat-label>
+          <mat-label>Фамилия</mat-label>
           <input class="form-control" formControlName="surname" matInput placeholder="Пример. Пушкин">
           <mat-hint align="end"></mat-hint>
         </mat-form-field>
 
         <mat-form-field class="form-group">
-          <mat-label>Name</mat-label>
+          <mat-label>Имя</mat-label>
           <input class="form-control" formControlName="name" matInput placeholder="Пример. Александр">
           <mat-hint align="end"></mat-hint>
         </mat-form-field>
 
         <mat-form-field class="form-group">
-          <mat-label>MiddleName</mat-label>
+          <mat-label>Отчество</mat-label>
           <input class="form-control" formControlName="middleName" matInput placeholder="Пример. Сергеевич">
           <mat-hint align="end"></mat-hint>
         </mat-form-field>
 
 
         <mat-form-field class="form-group">
-          <mat-label>dateOfBirth</mat-label>
+          <mat-label>Дата рождения</mat-label>
           <input class="form-control" formControlName="dateOfBirth" matInput placeholder="Пример. 6.06.1799">
           <mat-hint align="end"></mat-hint>
         </mat-form-field>
@@ -38,35 +38,37 @@
   </form>
 </div>
 
+<div class="container-tab">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef> Фамилия </th>
+      <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="surname">
-    <th mat-header-cell *matHeaderCellDef> surname </th>
-    <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
-  </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Имя </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
+    <ng-container matColumnDef="middleName">
+      <th mat-header-cell *matHeaderCellDef> Отчество </th>
+      <td mat-cell *matCellDef="let element"> {{element.middleName}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="middleName">
-    <th mat-header-cell *matHeaderCellDef> middleName </th>
-    <td mat-cell *matCellDef="let element"> {{element.middleName}} </td>
-  </ng-container>
+    <ng-container matColumnDef="dateOfBirth">
+      <th mat-header-cell *matHeaderCellDef> Дата рождения </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="dateOfBirth">
-    <th mat-header-cell *matHeaderCellDef> dateOfBirth </th>
-    <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
-  </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
 

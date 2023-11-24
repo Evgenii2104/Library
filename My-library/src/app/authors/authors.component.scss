@@ -1,9 +1,12 @@
-.div {
-  width: 100%;
-}
-.form {
+.container-form {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-direction: column;
   width: 100%;
+  max-width: 400px;
+  margin: 20px auto
+}
+.container-tab {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto
 }
